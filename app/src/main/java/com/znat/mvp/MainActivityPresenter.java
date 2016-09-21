@@ -1,18 +1,25 @@
 package com.znat.mvp;
 
 
-public class MainActivityPresenter {
+public class MainActivityPresenter implements IPresenter{
     int value;
     MainActivity view;
 
-    // The presenter gets a reference to the view and initializes the value on instantiation
-    public MainActivityPresenter(MainActivity view) {
-        this.view = view;
+    public MainActivityPresenter() {
         value = 0;
-        view.setValue(String.valueOf(value));
     }
 
-    // The presenter receives the click event, updates the model and notifies changes to the view.
+    @Override
+    public void bind(IView view){
+        this.view = (MainActivity) view;
+        this.view.setValue(String.valueOf(value));
+    }
+
+    @Override
+    public void unbind(){
+        this.view = null;
+    }
+
     public void onButtonClicked(){
         value++;
         view.setValue(String.valueOf(value));
