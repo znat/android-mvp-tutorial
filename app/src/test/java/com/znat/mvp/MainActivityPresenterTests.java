@@ -12,16 +12,16 @@ import static org.mockito.Mockito.verify;
 @RunWith(MockitoJUnitRunner.class)
 public class MainActivityPresenterTests {
     @Mock
-    MainActivity activity;
+    MainActivityContract.View view;
 
     @Spy
     MainActivityPresenter presenter = new MainActivityPresenter();
 
     @Test
     public void incrementationIsCorrect() throws Exception {
-        presenter.bind(activity);
+        presenter.bind(view);
         int val = presenter.value;
         presenter.onButtonClicked();
-        verify(activity,times(1)).setValue(String.valueOf(val+1));
+        verify(view,times(1)).setValue(String.valueOf(val+1));
     }
 }

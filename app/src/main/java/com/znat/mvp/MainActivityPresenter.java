@@ -1,9 +1,9 @@
 package com.znat.mvp;
 
 
-public class MainActivityPresenter implements IPresenter{
+public class MainActivityPresenter implements MainActivityContract.Presenter{
     int value;
-    MainActivity view;
+    MainActivityContract.View view;
 
     public MainActivityPresenter() {
         value = 0;
@@ -11,7 +11,7 @@ public class MainActivityPresenter implements IPresenter{
 
     @Override
     public void bind(IView view){
-        this.view = (MainActivity) view;
+        this.view = (MainActivityContract.View) view;
         this.view.setValue(String.valueOf(value));
     }
 

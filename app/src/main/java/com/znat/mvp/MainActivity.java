@@ -8,12 +8,12 @@ import android.widget.TextView;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
-public class MainActivity extends AppCompatActivity implements IView{
+public class MainActivity extends AppCompatActivity implements MainActivityContract.View{
 
     @BindView(R.id.clicks) TextView clicks;
     @BindView(R.id.increment) Button increment;
 
-    private MainActivityPresenter presenter;
+    private MainActivityContract.Presenter presenter;
     private boolean onSaveInstanceCalled;
 
     @Override
